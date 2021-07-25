@@ -1,0 +1,13 @@
+.header__option { 
+  text-align: center;
+  margin: 0 10px;
+}
+.header__option > .MuiSvgIcon-root {
+  font-size: 24px;
+  width: 24px; 
+}
+
+.header__option h3 {
+  font-size: 12px;
+  color: gray;
+}
