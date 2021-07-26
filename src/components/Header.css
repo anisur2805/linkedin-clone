@@ -1,8 +1,12 @@
 .header {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-evenly;
   padding: 10px;
   border-bottom: 1px solid #00000014;
+  z-index: 999;
 }
 .header__left {
   display: flex;
@@ -11,7 +15,8 @@
 .header__left > img {
   margin-right: 10px;
   height: 40px;
-  object-fit: contain;
+  -o-object-fit: contain;
+     object-fit: contain;
 }
 
 .header__search{
