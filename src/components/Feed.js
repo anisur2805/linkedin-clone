@@ -16,7 +16,7 @@ function Feed() {
   useEffect(() => {
     db.collection("posts")
       .orderBy("timestamp", "desc")
-      .onSnapShot((snapshot) =>
+      .onSnapshot((snapshot) =>
         setPosts(
           snapshot.docs.map((doc) => ({
             id: doc.id,
