@@ -15,7 +15,6 @@ function Feed() {
 
 	useEffect(() => {
 		db.collection("posts")
-			.orderBy("timestamp", "desc")
 			.onSnapshot((snapshot) =>
 				setPosts(
 					snapshot.docs.map((doc) => ({
@@ -35,10 +34,17 @@ function Feed() {
 			message: input,
 			photoUrl: "",
 			timeStamp: firebase.firestore.FieldValue.serverTimestamp(),
+		})
+		.then(() => {
+			console.log("Successful")
+		})
+		.catch((err) => {
+			console.log("Error ", err)
 		});
 
 		setInput("");
-		console.log("posts", posts);
+		// console.log("posts", posts);
+		console.log( typeof posts );
 	};
 	return (
 		<div className="feed">
