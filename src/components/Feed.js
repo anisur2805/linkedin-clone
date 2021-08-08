@@ -9,6 +9,8 @@ import EventNoteIcon from "@material-ui/icons/EventNote";
 import CalendarViewDayIcon from "@material-ui/icons/CalendarViewDay";
 import Post from "./Post";
 
+import "./Feed.css"
+
 function Feed() {
 	const [posts, setPosts] = useState([]);
 	const [input, setInput] = useState("");
