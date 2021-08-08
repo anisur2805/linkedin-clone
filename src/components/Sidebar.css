@@ -11,14 +11,15 @@
   border-radius: 10px 10px 0 0;
   text-align: center;
   padding-bottom: 20px;
+  width: 100%;
 }
 
 .sidebar__top > img {
-  height: -webkit-fit-content;
+  /* height: -webkit-fit-content;
   height: -moz-fit-content;
-  height: 50px;
-  -o-object-fit: cover;
-     object-fit: cover;
+  height: 50px; */
+  width: 100%;
+  object-fit: cover;
   border-radius: 10px 10px 0 0;  
 } 
 
