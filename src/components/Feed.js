@@ -9,7 +9,7 @@ import EventNoteIcon from "@material-ui/icons/EventNote";
 import CalendarViewDayIcon from "@material-ui/icons/CalendarViewDay";
 import Post from "./Post";
 
-import "./Feed.css"
+import "./Feed.css";
 
 function Feed() {
 	const [posts, setPosts] = useState([]);
@@ -17,36 +17,36 @@ function Feed() {
 
 	useEffect(() => {
 		db.collection("posts")
-			.onSnapshot((snapshot) =>
-				setPosts(
-					snapshot.docs.map((doc) => ({
-						id: doc.id,
-						data: doc.data(),
-					}))
-				)
-			);
+		.orderBy("timeStamp", "desc")
+		.onSnapshot((snapshot) =>
+			setPosts(
+				snapshot.docs.map((doc) => ({
+					id: doc.id,
+					data: doc.data(),
+				}))
+			)
+		);
 	}, []);
 
 	const sendPost = (e) => {
 		e.preventDefault();
 
-		db.collection("posts").add({
-			name: "Anisur Rahman",
-			description: "this is a test",
-			message: input,
-			photoUrl: "",
-			timeStamp: firebase.firestore.FieldValue.serverTimestamp(),
-		})
-		.then(() => {
-			console.log("Successful")
-		})
-		.catch((err) => {
-			console.log("Error ", err)
-		});
+		db.collection("posts")
+			.add({
+				name: "Anisur Rahman",
+				description: "this is a test",
+				message: input,
+				photoUrl: "",
+				timeStamp: firebase.firestore.FieldValue.serverTimestamp(),
+			})
+			.then(() => {
+				console.log("Successful");
+			})
+			.catch((err) => {
+				console.log("Error ", err);
+			});
 
-		setInput("");
-		// console.log("posts", posts);
-		console.log( typeof posts );
+		setInput(""); 
 	};
 	return (
 		<div className="feed">
@@ -61,25 +61,29 @@ function Feed() {
 						<button type="submit" onClick={sendPost} />
 					</form>
 				</div>
-			</div>
 
-			<div className="feed__inputOptions">
-				<InputOption Icon={ImageIcon} title="Photo" color="#70B5F9" />
-				<InputOption
-					Icon={SubscriptionsIcon}
-					title="Video"
-					color="#70B5F9"
-				/>
-				<InputOption
-					Icon={EventNoteIcon}
-					title="Event"
-					color="#70B5F9"
-				/>
-				<InputOption
-					Icon={CalendarViewDayIcon}
-					title="Write Article"
-					color="#70B5F9"
-				/>
+				<div className="feed__inputOptions">
+					<InputOption
+						Icon={ImageIcon}
+						title="Photo"
+						color="#70B5F9"
+					/>
+					<InputOption
+						Icon={SubscriptionsIcon}
+						title="Video"
+						color="#70B5F9"
+					/>
+					<InputOption
+						Icon={EventNoteIcon}
+						title="Event"
+						color="#70B5F9"
+					/>
+					<InputOption
+						Icon={CalendarViewDayIcon}
+						title="Write Article"
+						color="#70B5F9"
+					/>
+				</div>
 			</div>
 
 			{posts.map(
