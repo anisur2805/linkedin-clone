@@ -15,6 +15,7 @@ function Feed() {
 
 	useEffect(() => {
 		db.collection("posts")
+			.orderBy("timeStamp", "desc")
 			.onSnapshot((snapshot) =>
 				setPosts(
 					snapshot.docs.map((doc) => ({
@@ -28,23 +29,24 @@ function Feed() {
 	const sendPost = (e) => {
 		e.preventDefault();
 
-		db.collection("posts").add({
-			name: "Anisur Rahman",
-			description: "this is a test",
-			message: input,
-			photoUrl: "",
-			timeStamp: firebase.firestore.FieldValue.serverTimestamp(),
-		})
-		.then(() => {
-			console.log("Successful")
-		})
-		.catch((err) => {
-			console.log("Error ", err)
-		});
+		db.collection("posts")
+			.add({
+				name: "Anisur Rahman",
+				description: "this is a test",
+				message: input,
+				photoUrl: "",
+				timeStamp: firebase.firestore.FieldValue.serverTimestamp(),
+			})
+			.then(() => {
+				console.log("Successful");
+			})
+			.catch((err) => {
+				console.log("Error ", err);
+			});
 
 		setInput("");
 		// console.log("posts", posts);
-		console.log( typeof posts );
+		console.log(typeof posts);
 	};
 	return (
 		<div className="feed">
