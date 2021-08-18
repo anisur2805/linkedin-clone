@@ -38,7 +38,10 @@ function Header() {
 				<HeaderOption
 					onClick={logOfOut}
 					title="Me"
-					avatar="https://media-exp1.licdn.com/dms/image/C5103AQExs31ZUfBz8g/profile-displayphoto-shrink_100_100/0/1561810463192?e=1632960000&v=beta&t=mP5kRDomPl1G1gsM7AL4LtQ_KjT-3LVcFOUoyYdJpoA"></HeaderOption>
+          avatar={true}
+				  // avatar="https://media-exp1.licdn.com/dms/image/C5103AQExs31ZUfBz8g/profile-displayphoto-shrink_100_100/0/1561810463192?e=1632960000&v=beta&t=mP5kRDomPl1G1gsM7AL4LtQ_KjT-3LVcFOUoyYdJpoA"
+          >
+        </HeaderOption>
 			</div>
 		</div>
 	);
