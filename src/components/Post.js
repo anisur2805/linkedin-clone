@@ -5,14 +5,18 @@ import ChatOutlinedIcon from '@material-ui/icons/ChatOutlined'
 import ShareOutlinedIcon from '@material-ui/icons/ShareOutlined'
 import SendOutlinedIcon from '@material-ui/icons/SendOutlined'
 import InputOption from './InputOption'
+import { useSelector } from "react-redux";
+import { selectUser } from "../features/userSlice.js";
 
-function Post({name, description, message, photoUrl}) {
+function Post({name, description, message, photoUrl}) { 
+	const user = useSelector(selectUser)
+
   return (
     <div className="post">
       <div className="post__header">
-        <Avatar />
+        <Avatar src={user.photoURL}>{user.email[0]}</Avatar>
         <div className="post__info">
-          <h2>{name }</h2>
+          <h2>{user.displayName }</h2>
           <p>{description}</p>
         </div>
       </div>
