@@ -15,6 +15,19 @@ function Login() {
 
 	const loginToApp = (e) => {
 		e.preventDefault();
+		console.log("Clicked", e.target);
+		auth.signInWithEmailAndPassword(email, password)
+			.then((userAuth) => {
+				dispatch(
+					login({
+						email: userAuth.email,
+						uid: userAuth.uid,
+						displayName: userAuth.displayName,
+						photoUrl: userAuth.photoURL,
+					})
+				);
+			})
+			.catch((err) => console.log(err));
 	};
 	const register = () => {
 		if (!name) {
@@ -40,8 +53,7 @@ function Login() {
 					});
 			})
 			.catch((error) => alert(error));
-        
-    };
+	};
 	return (
 		<div className="login">
 			<img
@@ -71,9 +83,7 @@ function Login() {
 					type="password"
 					placeholder="Enter Password"
 				/>
-				<button onClick={loginToApp}>
-					Sign In
-				</button>
+				<button onClick={loginToApp}>Sign In</button>
 				<p className="register__signup">
 					New to LinkedIn? <span onClick={register}>Join now</span>
 				</p>
