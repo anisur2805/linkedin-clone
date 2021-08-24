@@ -6,10 +6,11 @@ import './HeaderOption.css';
 
 const HeaderOption = ({Icon, title, avatar, onClick}) => {
   const user = useSelector(selectUser)
+  // console.log(user)
   return(
     <div onClick={onClick} className="header__option">
       {Icon && <Icon className="" />}
-      {avatar && <Avatar src={user.photoURL} className="header__avatarClass">{user?.email[0]}</Avatar>}
+      {avatar && <Avatar src={user.photoUrl} className="header__avatarClass">{user?.email[0]}</Avatar>}
       <h3>{title}</h3>
     </div>
   )
