@@ -6,7 +6,9 @@
   flex: 0.2;
   position: -webkit-sticky;
   position: sticky;
-  top: 100px;
+  top: 80px;
+  height: fit-content;
+  transition: all .4s ease-in-out;
 }
 
 .sidebar__top { 
