@@ -58,6 +58,7 @@ function Feed() {
 						<input
 							value={input}
 							onChange={(e) => setInput(e.target.value)}
+							placeholder="Whats on your mind..."
 						/>
 						<button type="submit" onClick={sendPost} />
 					</form>
