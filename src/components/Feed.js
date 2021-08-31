@@ -8,6 +8,7 @@ import SubscriptionsIcon from "@material-ui/icons/Subscriptions";
 import EventNoteIcon from "@material-ui/icons/EventNote";
 import CalendarViewDayIcon from "@material-ui/icons/CalendarViewDay";
 import Post from "./Post";
+import FlipMove from "react-flip-move";
 
 import "./Feed.css";
 
@@ -17,15 +18,15 @@ function Feed() {
 
 	useEffect(() => {
 		db.collection("posts")
-		.orderBy("timeStamp", "desc")
-		.onSnapshot((snapshot) =>
-			setPosts(
-				snapshot.docs.map((doc) => ({
-					id: doc.id,
-					data: doc.data(),
-				}))
-			)
-		);
+			.orderBy("timeStamp", "desc")
+			.onSnapshot((snapshot) =>
+				setPosts(
+					snapshot.docs.map((doc) => ({
+						id: doc.id,
+						data: doc.data(),
+					}))
+				)
+			);
 	}, []);
 
 	const sendPost = (e) => {
@@ -46,7 +47,7 @@ function Feed() {
 				console.log("Error ", err);
 			});
 
-		setInput(""); 
+		setInput("");
 	};
 	return (
 		<div className="feed">
@@ -86,17 +87,22 @@ function Feed() {
 				</div>
 			</div>
 
-			{posts.map(
-				({ id, data: { name, description, message, photoUrl } }) => (
-					<Post
-						key={id}
-						name={name}
-						description={description}
-						message={message}
-						photoUrl={photoUrl}
-					/>
-				)
-			)}
+			<FlipMove>
+				{posts.map(
+					({
+						id,
+						data: { name, description, message, photoUrl },
+					}) => (
+						<Post
+							key={id}
+							name={name}
+							description={description}
+							message={message}
+							photoUrl={photoUrl}
+						/>
+					)
+				)}
+			</FlipMove>
 		</div>
 	);
 }
