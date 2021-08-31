@@ -1,0 +1,31 @@
+.widgets {
+    position: sticky;
+    top: 80px;
+    flex: 0.2;
+    background: #fff;
+    border-radius: 10px;
+    padding: 10px;
+    border: 1px solid lightgray;
+    height: fit-content;
+}
+
+.widgets__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 15px 0;
+}
+
+.widgets__news {
+    display: flex;
+    align-items: center;
+    /* justify-content: space-between; */
+    margin-bottom: 12px;
+}
+.widgets__news_rightSide {
+    padding-left: 12px;
+}
+
+.widgets__news:hover .widgets__news_leftSide svg {
+    color: #000;
+}

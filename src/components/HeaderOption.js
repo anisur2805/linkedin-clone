@@ -12,7 +12,7 @@ const HeaderOption = ({ Icon, title, avatar, onClick }) => {
 			{Icon && <Icon className="" />}
 			{avatar && (
 				<Avatar src={user?.photoURL} className="header__avatarClass">
-					{user.email[0]}
+					{user?.email[0]}
 				</Avatar>
 			)}
 			<h3>{title}</h3>
