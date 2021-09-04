@@ -1,20 +1,25 @@
-import React, { useState, useEffect } from "react";
-import firebase from "firebase";
-import { db } from "../firebase.js";
+import CalendarViewDayIcon from "@material-ui/icons/CalendarViewDay";
 import CreateIcon from "@material-ui/icons/Create";
-import InputOption from "./InputOption";
+import EventNoteIcon from "@material-ui/icons/EventNote";
 import ImageIcon from "@material-ui/icons/Image";
 import SubscriptionsIcon from "@material-ui/icons/Subscriptions";
-import EventNoteIcon from "@material-ui/icons/EventNote";
-import CalendarViewDayIcon from "@material-ui/icons/CalendarViewDay";
-import Post from "./Post";
+import firebase from "firebase";
+import React, { useEffect, useState } from "react";
 import FlipMove from "react-flip-move";
-
+import { useSelector } from 'react-redux';
+import { selectUser } from '../features/userSlice';
+import { db } from "../firebase.js";
 import "./Feed.css";
+import InputOption from "./InputOption";
+import Post from "./Post";
+
 
 function Feed() {
 	const [posts, setPosts] = useState([]);
 	const [input, setInput] = useState("");
+	
+	const user = useSelector(selectUser);
+	console.log("user ", user);
 
 	useEffect(() => {
 		db.collection("posts")
@@ -34,10 +39,10 @@ function Feed() {
 
 		db.collection("posts")
 			.add({
-				name: "Anisur Rahman",
-				description: "this is a test",
+				name: user.displayName,
+				description: user.email,
 				message: input,
-				photoUrl: "",
+				photoUrl: user.photoUrl || '',
 				timeStamp: firebase.firestore.FieldValue.serverTimestamp(),
 			})
 			.then(() => {

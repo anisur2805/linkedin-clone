@@ -10,13 +10,12 @@ import { selectUser } from "../features/userSlice.js";
 
 const Post = forwardRef(({ name, description, message, photoUrl }, ref) => {
 	const user = useSelector(selectUser);
-
 	return (
 		<div ref={ref} className="post">
 			<div className="post__header">
-				<Avatar src={user.photoUrl}>{user.email[0]}</Avatar>
+				<Avatar src={photoUrl}>{user.email[0]}</Avatar>
 				<div className="post__info">
-					<h2>{user.displayName}</h2>
+					<h2>{name}</h2>
 					<p>{description}</p>
 				</div>
 			</div>
