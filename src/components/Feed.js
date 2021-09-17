@@ -13,10 +13,6 @@ import "./Feed.css";
 import InputOption from "./InputOption";
 import Post from "./Post";
 
-/*
-* TODO:
-* 
-*/
 function Feed() {
 	const [posts, setPosts] = useState([]);
 	const [input, setInput] = useState("");
