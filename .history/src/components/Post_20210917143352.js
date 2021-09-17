@@ -10,7 +10,6 @@ import InputOption from "./InputOption";
 
 const Post = forwardRef(({ name, description, message, photoUrl }, ref) => {
 	const user = useSelector(selectUser);
-	console.log(user)
 	return (
 		<div ref={ref} className="post">
 			<div className="post__header">

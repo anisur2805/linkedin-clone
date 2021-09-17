@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React from "react";
+import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { login } from "../features/userSlice";
 import { auth } from "../firebase";
@@ -14,7 +15,7 @@ function Login() {
 
 	const loginToApp = (e) => {
 		e.preventDefault();
-		// console.log("Clicked", e.target);
+		console.log("Clicked", e.target);
 		auth.signInWithEmailAndPassword(email, password)
 			.then((userAuth) => {
 				dispatch(
