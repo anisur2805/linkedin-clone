@@ -10,11 +10,12 @@ import InputOption from "./InputOption";
 
 const Post = forwardRef(({ name, description, message, photoUrl }, ref) => {
 	const user = useSelector(selectUser);
-	console.log(user)
 	return (
 		<div ref={ref} className="post">
 			<div className="post__header">
-				<Avatar src={photoUrl}>{user.email[0]}</Avatar>
+				{user !== undefined && (
+					<Avatar src={photoUrl}>{user.email[0]}</Avatar>
+				)}
 				<div className="post__info">
 					<h2>{name}</h2>
 					{/* <h2>{user.email}</h2> */}

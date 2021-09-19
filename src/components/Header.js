@@ -1,15 +1,15 @@
 import React from "react";
+import { Home } from "@material-ui/icons";
+import ChatIcon from "@material-ui/icons/Chat";
+import NotificationIcon from "@material-ui/icons/Notifications";
 import SearchIcon from "@material-ui/icons/Search";
+import SupervisedUserCircleIcon from "@material-ui/icons/SupervisedUserCircle";
+import { useDispatch } from "react-redux";
+import { logout } from "../features/userSlice";
+import { auth } from "../firebase";
 import logo from "../logo.png";
 import "./Header.css";
 import HeaderOption from "./HeaderOption";
-import HomeIcon from "@material-ui/icons/Home";
-import SupervisedUserCircleIcon from "@material-ui/icons/SupervisedUserCircle";
-import NotificationIcon from "@material-ui/icons/Notifications";
-import ChatIcon from "@material-ui/icons/Chat";
-import { logout } from "../features/userSlice";
-import { useDispatch } from "react-redux";
-import { auth } from "../firebase";
 
 function Header() {
 	const dispatch = useDispatch();
@@ -27,7 +27,7 @@ function Header() {
 				</div>
 			</div>
 			<div className="header__right">
-				<HeaderOption title="Home" Icon={HomeIcon}></HeaderOption>
+				<HeaderOption title="Home" Icon={Home}></HeaderOption>
 				<HeaderOption
 					title="My Network"
 					Icon={SupervisedUserCircleIcon}></HeaderOption>
